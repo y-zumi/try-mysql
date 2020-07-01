@@ -5,8 +5,8 @@ RUN mysql_install_db --datadir=/var/lib/mysql --user=mysql
 
 RUN echo "NETWORKING=yes" > /etc/sysconfig/network
 RUN echo -e "\nbind-address = 0.0.0.0" >> /etc/my.cnf
-RUN echo -e "\nmysqld_safe: 172.17.0.1" >> /etc/hosts.allow
-RUN echo -e "\nmysqld: 172.17.0.1" >> /etc/hosts.allow
+RUN echo -e "\nmysqld_safe: *" >> /etc/hosts.allow
+RUN echo -e "\nmysqld: *" >> /etc/hosts.allow
 
 ADD ./setup.sql ./setup.sql
 # RUN /usr/bin/mysqld_safe & sleep 10s & cat setup.sql | mysql
